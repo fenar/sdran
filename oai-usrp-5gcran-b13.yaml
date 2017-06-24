@@ -1,0 +1,121 @@
+series: xenial
+services: 
+  "oai-enb": 
+    charm: "cs:~navid-nikaein/xenial/oai-enb-24"
+    num_units: 1
+    options: 
+      branch: "develop"
+      N_RB_DL: 25
+      downlink_frequency: "751000000L"
+      eutra_band: 13
+      target_hardware: "usrp_b200"
+      uplink_frequency_offset: "31000000"
+      eth: "br-eth0"
+      fh_if_name: "br-eth0"
+      node_function: "NGFI_RCC_IF4p5"
+      agent_active: "yes"
+      remote_monitoring: "no"
+    annotations: 
+      "gui-x": "795.5335693359375"
+      "gui-y": "1118.0245387647"
+    to: 
+      - "1"
+  "oai-rru": 
+    charm: "cs:~navid-nikaein/xenial/oai-rru-15"
+    num_units: 1
+    options:
+      branch: "develop"
+      fh_if_name: "br-eth0"
+      node_function: "NGFI_RRU_IF4p5"
+      eutra_band: 13
+      downlink_frequency: "751000000L"
+      uplink_frequency_offset: "31000000"
+      N_RB_DL: 25
+      #target_hardware: "usrp_b200"
+    annotations: 
+      "gui-x": "1154.3092041015625"
+      "gui-y": "1113.743044624075"
+    to: 
+      - "2"
+  "flexran-rtc": 
+    charm: "cs:~navid-nikaein/xenial/flexran-rtc-14"
+    num_units: 1
+    options:
+      branch: "develop"
+      user_name: "your_user_name"
+      passwd: "your_passwd"
+    annotations: 
+      "gui-x": "788.0409545898438"
+      "gui-y": "645.5100123975126"
+    to: 
+      - "lxd:3"
+  "oai-mme": 
+    charm: "cs:~navid-nikaein/xenial/oai-mme-16"
+    num_units: 1
+    options:
+      branch: "develop"
+      eth: "eth0"
+    annotations: 
+      "gui-x": "412.0322265625"
+      "gui-y": "807.6817932128906"
+    to: 
+      - "lxd:3"      
+  "oai-hss": 
+    charm: "cs:~navid-nikaein/xenial/oai-hss-8"
+    num_units: 1
+    options:
+      branch: "develop"
+      eth: "eth0"
+    annotations: 
+      "gui-x": "5.1247406005859375"
+      "gui-y": "813.7240626904814"
+    to: 
+      - "lxd:3"
+  "mysql": 
+    charm: "cs:xenial/mysql-56"
+    num_units: 1
+    annotations: 
+      "gui-x": "-7.511909484863338"
+      "gui-y": "541.4643581006377"
+    to: 
+      - "lxd:3"
+  "oai-spgw":
+    charm: "cs:~navid-nikaein/xenial/oai-spgw-13"
+    num_units: 1
+    options:
+      branch: "develop"
+      sgw-eth: "br-eth0"
+      pgw-eth: "br-eth0"
+      DEFAULT_DNS_IPV4_ADDRESS: "172.27.61.254"
+      DEFAULT_DNS_SEC_IPV4_ADDRESS: "172.27.60.1"
+    annotations:
+      "gui-x": "391.90765380859375"
+      "gui-y": "1136.3841552734375"
+    to:
+      - "4"
+relations: 
+  - - "oai-enb:mme"
+    - "oai-mme:mme"
+  - - "oai-hss:db"
+    - "mysql:db"
+  - - "oai-rru:rru"
+    - "oai-enb:rru"
+  - - "oai-hss:hss"
+    - "oai-mme:hss"
+  - - "oai-mme:spgw"
+    - "oai-spgw:spgw"
+  - - "flexran-rtc:rtc"
+    - "oai-enb:rtc"
+machines: 
+  "1": 
+    series: xenial
+    constraints: "arch=amd64 cpu-cores=4 mem=16G"
+  "2":
+    series: xenial
+    constraints: "arch=amd64 cpu-cores=4 mem=16G"
+  "3":
+    series: xenial
+    constraints: "arch=amd64 cpu-cores=4 mem=16G"
+  "4":
+    series: xenial
+    constraints: "arch=amd64 cpu-cores=4 mem=16G"
