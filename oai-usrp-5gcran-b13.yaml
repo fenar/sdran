@@ -31,7 +31,7 @@ services:
       downlink_frequency: "751000000L"
       uplink_frequency_offset: "31000000"
       N_RB_DL: 25
-      #target_hardware: "usrp_b200"
+      target_hardware: "usrp_b200"
     annotations: 
       "gui-x": "1154.3092041015625"
       "gui-y": "1113.743044624075"
@@ -48,7 +48,7 @@ services:
       "gui-x": "788.0409545898438"
       "gui-y": "645.5100123975126"
     to: 
-      - "lxd:3"
+      - "3"
   "oai-mme": 
     charm: "cs:~navid-nikaein/xenial/oai-mme-16"
     num_units: 1
@@ -59,7 +59,7 @@ services:
       "gui-x": "412.0322265625"
       "gui-y": "807.6817932128906"
     to: 
-      - "lxd:3"      
+      - "4"      
   "oai-hss": 
     charm: "cs:~navid-nikaein/xenial/oai-hss-8"
     num_units: 1
@@ -70,7 +70,7 @@ services:
       "gui-x": "5.1247406005859375"
       "gui-y": "813.7240626904814"
     to: 
-      - "lxd:3"
+      - "5"
   "mysql": 
     charm: "cs:xenial/mysql-56"
     num_units: 1
@@ -78,7 +78,7 @@ services:
       "gui-x": "-7.511909484863338"
       "gui-y": "541.4643581006377"
     to: 
-      - "lxd:3"
+      - "6"
   "oai-spgw":
     charm: "cs:~navid-nikaein/xenial/oai-spgw-13"
     num_units: 1
@@ -92,7 +92,7 @@ services:
       "gui-x": "391.90765380859375"
       "gui-y": "1136.3841552734375"
     to:
-      - "4"
+      - "7"
 relations: 
   - - "oai-enb:mme"
     - "oai-mme:mme"
@@ -109,7 +109,7 @@ relations:
 machines: 
   "1": 
     series: xenial
-    constraints: "arch=amd64 cpu-cores=4 mem=16G"
+    constraints: "arch=amd64 tags=radio"
   "2":
     series: xenial
     constraints: "arch=amd64 cpu-cores=4 mem=16G"
@@ -117,5 +117,14 @@ machines:
     series: xenial
     constraints: "arch=amd64 cpu-cores=4 mem=16G"
   "4":
+    series: xenial
+    constraints: "arch=amd64 cpu-cores=4 mem=16G"
+  "5":
+    series: xenial
+    constraints: "arch=amd64 cpu-cores=4 mem=16G"
+  "6":
+    series: xenial
+    constraints: "arch=amd64 cpu-cores=4 mem=16G"
+  "7":
     series: xenial
     constraints: "arch=amd64 cpu-cores=4 mem=16G"
