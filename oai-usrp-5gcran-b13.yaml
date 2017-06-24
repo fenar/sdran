@@ -86,8 +86,8 @@ services:
       branch: "develop"
       sgw-eth: "br-eth0"
       pgw-eth: "br-eth0"
-      DEFAULT_DNS_IPV4_ADDRESS: "172.27.61.254"
-      DEFAULT_DNS_SEC_IPV4_ADDRESS: "172.27.60.1"
+      DEFAULT_DNS_IPV4_ADDRESS: "172.27.201.254"
+      DEFAULT_DNS_SEC_IPV4_ADDRESS: "172.27.200.1"
     annotations:
       "gui-x": "391.90765380859375"
       "gui-y": "1136.3841552734375"
