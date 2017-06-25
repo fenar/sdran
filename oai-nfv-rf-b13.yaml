@@ -9,9 +9,8 @@ services:
       eutra_band: 13
       target_hardware: usrp
       uplink_frequency_offset: "31000000"
-      rrh_active: "no"
+      #rrh_active: "no"
       rx_gain: 100
-      branch: "v0.3.2-branch"
     annotations: 
       "gui-x": "1167.388427734375"
       "gui-y": "405.73126483891895"
@@ -46,8 +45,8 @@ services:
     to: 
       - "3"
 relations: 
-  - - "oai-epc:epc"
-    - "oai-enb:epc"
+  - - "oai-epc"
+    - "oai-enb"
   - - "mysql:db"
     - "oai-hss:db"
   - - "oai-hss:hss"
