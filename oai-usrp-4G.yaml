@@ -1,7 +1,7 @@
 series: xenial
 services: 
   "oai-enb":
-    charm: "cs:~navid-nikaein/trusty/oai-enb"
+    charm: "cs:~navid-nikaein/xenial/oai-enb"
     num_units: 1
     options:
       N_RB_DL: 25
