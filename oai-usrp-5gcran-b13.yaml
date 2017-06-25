@@ -4,7 +4,8 @@ services:
     charm: "cs:~navid-nikaein/xenial/oai-enb-24"
     num_units: 1
     options: 
-      branch: "develop"
+      #branch: "develop"
+      branch: "v0.3.2-branch"
       N_RB_DL: 25
       downlink_frequency: "751000000L"
       eutra_band: 13
@@ -24,7 +25,8 @@ services:
     charm: "cs:~navid-nikaein/xenial/oai-rru-15"
     num_units: 1
     options:
-      branch: "develop"
+      #branch: "develop"
+      branch: "v0.3.2-branch"
       fh_if_name: "br-eth0"
       node_function: "NGFI_RRU_IF4p5"
       eutra_band: 13
@@ -41,7 +43,8 @@ services:
     charm: "cs:~navid-nikaein/xenial/flexran-rtc-14"
     num_units: 1
     options:
-      branch: "develop"
+      #branch: "develop"
+      branch: "v0.3.2-branch"
       user_name: "your_user_name"
       passwd: "your_passwd"
     annotations: 
@@ -53,7 +56,8 @@ services:
     charm: "cs:~navid-nikaein/xenial/oai-mme-16"
     num_units: 1
     options:
-      branch: "develop"
+      #branch: "develop"
+      branch: "v0.3.2-branch"
       eth: "eth0"
     annotations: 
       "gui-x": "412.0322265625"
@@ -64,7 +68,8 @@ services:
     charm: "cs:~navid-nikaein/xenial/oai-hss-8"
     num_units: 1
     options:
-      branch: "develop"
+      #branch: "develop"
+      branch: "v0.3.2-branch"
       eth: "eth0"
     annotations: 
       "gui-x": "5.1247406005859375"
@@ -83,7 +88,8 @@ services:
     charm: "cs:~navid-nikaein/xenial/oai-spgw-13"
     num_units: 1
     options:
-      branch: "develop"
+      #branch: "develop"
+      branch: "v0.3.2-branch"
       sgw-eth: "br-eth0"
       pgw-eth: "br-eth0"
       DEFAULT_DNS_IPV4_ADDRESS: "172.27.201.254"
