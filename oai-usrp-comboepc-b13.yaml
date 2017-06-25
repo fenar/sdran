@@ -10,6 +10,7 @@ services:
       target_hardware: usrp
       uplink_frequency_offset: "31000000"
       rx_gain: 110      
+      branch: "v0.3.2-branch"
     annotations: 
       "gui-x": "987.388427734375"
       "gui-y": "747.73126483891895"
@@ -21,6 +22,8 @@ services:
     annotations: 
       "gui-x": "353"
       "gui-y": "267"
+    options:
+      branch: "v0.3.2-branch"
     to: 
       - "2"
   "oai-hss": 
@@ -29,6 +32,8 @@ services:
     annotations: 
       "gui-x": "592.7639770507812"
       "gui-y": "652.7269923779814"
+    options:
+      branch: "v0.3.2-branch"
     to: 
       - "1"
   "mysql": 
