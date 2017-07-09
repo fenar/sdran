@@ -1,26 +1,28 @@
 series: xenial
 services: 
-  "oai-enb":
-    charm: "cs:~navid-nikaein/xenial/oai-enb"
+  "oai-enb": 
+    charm: "cs:~navid-nikaein/xenial/oai-enb-24"
     num_units: 1
-    options:
+    options: 
+      branch: "develop"
       N_RB_DL: 25
-      downlink_frequency: "751000000L"
-      eutra_band: 13
-      target_hardware: usrp
-      uplink_frequency_offset: "31000000"
-      rx_gain: 110
-      target_hardware: usrp
-    annotations:
-      "gui-x": "1167.388427734375"
-      "gui-y": "405.73126483891895"
-    to:
+      downlink_frequency: "2680000000L"
+      eutra_band: 7
+      target_hardware: "usrp_b200"
+      uplink_frequency_offset: "-120000000"
+      node_function: "eNodeB_3GPP"
+      agent_active: "no"
+      remote_monitoring: "no"
+    annotations: 
+      "gui-x": "795.5335693359375"
+      "gui-y": "1118.0245387647"
+    to: 
       - "1"
   "oai-mme": 
-    charm: "cs:~navid-nikaein/xenial/oai-mme"
+    charm: "cs:~navid-nikaein/xenial/oai-mme-16"
     num_units: 1
     options:
-      branch: "v0.3.2-branch"
+      branch: "develop"
       eth: "eth0"
     annotations: 
       "gui-x": "412.0322265625"
@@ -28,10 +30,10 @@ services:
     to: 
       - "2"      
   "oai-hss": 
-    charm: "cs:~navid-nikaein/xenial/oai-hss"
+    charm: "cs:~navid-nikaein/xenial/oai-hss-8"
     num_units: 1
     options:
-      branch: "v0.3.2-branch"
+      branch: "develop"
       eth: "eth0"
     annotations: 
       "gui-x": "5.1247406005859375"
@@ -39,7 +41,7 @@ services:
     to: 
       - "3"
   "mysql": 
-    charm: "cs:xenial/mysql"
+    charm: "cs:xenial/mysql-56"
     num_units: 1
     annotations: 
       "gui-x": "-7.511909484863338"
@@ -47,10 +49,10 @@ services:
     to: 
       - "4"
   "oai-spgw":
-    charm: "cs:~navid-nikaein/xenial/oai-spgw"
+    charm: "cs:~navid-nikaein/xenial/oai-spgw-13"
     num_units: 1
     options:
-      branch: "v0.3.2-branch"
+      branch: "develop"
       sgw-eth: "eth0"
       pgw-eth: "eth0"
       DEFAULT_DNS_IPV4_ADDRESS: "172.27.201.254"
@@ -72,16 +74,16 @@ relations:
 machines: 
   "1": 
     series: xenial
-    constraints: "arch=amd64 tags=radio"
+    constraints: "arch=amd64 cpu-cores=4 mem=16G tags=radio"
   "2":
     series: xenial
-    constraints: "arch=amd64 cpu-cores=4 mem=16G"
+    constraints: "arch=amd64 cpu-cores=4 mem=16G tags=physical"
   "3":
     series: xenial
-    constraints: "arch=amd64 cpu-cores=4 mem=16G"
+    constraints: "arch=amd64 cpu-cores=4 mem=16G tags=physical"
   "4":
     series: xenial
-    constraints: "arch=amd64 cpu-cores=4 mem=16G"
+    constraints: "arch=amd64 cpu-cores=4 mem=16G tags=physical"
   "5":
     series: xenial
-    constraints: "arch=amd64 cpu-cores=4 mem=16G"
+    constraints: "arch=amd64 cpu-cores=4 mem=16G tags=physical"
