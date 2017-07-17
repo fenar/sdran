@@ -1,7 +1,7 @@
 series: xenial
 services: 
   "oai-enb": 
-    charm: "cs:~navid-nikaein/xenial/oai-enb-24"
+    charm: "cs:~navid-nikaein/xenial/oai-enb"
     num_units: 1
     options: 
       branch: "develop"
@@ -10,27 +10,27 @@ services:
       eutra_band: 7
       target_hardware: "usrp_b200"
       uplink_frequency_offset: "-120000000"
-      node_function: "eNodeB_3GPP"
-      agent_active: "no"
-      remote_monitoring: "no"
+      rx_gain: 125
     annotations: 
       "gui-x": "795.5335693359375"
       "gui-y": "1118.0245387647"
     to: 
       - "1"
   "oai-mme": 
-    charm: "cs:~navid-nikaein/xenial/oai-mme-16"
+    charm: "cs:~navid-nikaein/xenial/oai-mme"
     num_units: 1
     options:
       branch: "develop"
       eth: "eth0"
+      gummei_tai_mcc: "90"
+      gummei_tai_mnc: "532"
     annotations: 
       "gui-x": "412.0322265625"
       "gui-y": "807.6817932128906"
     to: 
       - "2"      
   "oai-hss": 
-    charm: "cs:~navid-nikaein/xenial/oai-hss-8"
+    charm: "cs:~navid-nikaein/xenial/oai-hss"
     num_units: 1
     options:
       branch: "develop"
@@ -49,14 +49,14 @@ services:
     to: 
       - "4"
   "oai-spgw":
-    charm: "cs:~navid-nikaein/xenial/oai-spgw-13"
+    charm: "cs:~navid-nikaein/xenial/oai-spgw"
     num_units: 1
     options:
       branch: "develop"
       sgw-eth: "eth0"
       pgw-eth: "eth0"
-      DEFAULT_DNS_IPV4_ADDRESS: "172.27.201.254"
-      DEFAULT_DNS_SEC_IPV4_ADDRESS: "172.27.200.1"
+      DEFAULT_DNS_IPV4_ADDRESS: "8.8.8.8"
+      DEFAULT_DNS_SEC_IPV4_ADDRESS: "8.8.8.8"
     annotations:
       "gui-x": "391.90765380859375"
       "gui-y": "1136.3841552734375"
