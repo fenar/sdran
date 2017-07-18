@@ -9,7 +9,7 @@ cd cmake_targets <br>
 ./build_oai -I -g --eNB -x --install-system-files -w USRP  <br>
 
 #Edit
-/srv/openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF/enb.band7.tm1.usrpb210.conf
+/srv/openairinterface/targets/PROJECTS/GENERIC-LTE-EPC/CONF/enb.band7.tm1.usrpb210.conf
 ```sh
 // Tracking area code, 0x0000 and 0xfffe are reserved values
 
@@ -49,7 +49,7 @@ ENB_PORT_FOR_S1U = 2152; # Spec 2152
 ```
 
 #Execute
-cd ~/openairinterface5g <br>
+cd ~/openairinterface <br>
 source oaienv <br>
 ./cmake_targets/build_oai -w USRP -x -c --eNB <br>
 cd cmake_targets/lte_build_oai/build <br>
