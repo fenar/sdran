@@ -3,10 +3,10 @@ Software Defined Radio Related Work <br>
 Ref-URL: https://gitlab.eurecom.fr/oai/openairinterface5g/wikis/HowToConnectCOTSUEwithOAIeNB
 
 #Compile
-cd ~/openairinterface
-source oaienv
-cd cmake_targets
-./build_oai -I -g --eNB -x --install-system-files -w USRP 
+cd ~/openairinterface <br>
+source oaienv <br>
+cd cmake_targets <br>
+./build_oai -I -g --eNB -x --install-system-files -w USRP  <br>
 
 #Edit
 /srv/openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF/enb.band7.tm1.usrpb210.conf
@@ -49,10 +49,10 @@ ENB_PORT_FOR_S1U = 2152; # Spec 2152
 ```
 
 #Execute
-cd ~/openairinterface5g
-source oaienv
-./cmake_targets/build_oai -w USRP -x -c --eNB
-cd cmake_targets/lte_build_oai/build
-sudo -E ./lte-softmodem -O $OPENAIR_DIR/targets/PROJECTS/GENERIC-LTE-EPC/CONF/enb.band7.tm1.usrpb210.conf -d
-sudo -E ./lte-softmodem -h #(to see help options)
+cd ~/openairinterface5g <br>
+source oaienv <br>
+./cmake_targets/build_oai -w USRP -x -c --eNB <br>
+cd cmake_targets/lte_build_oai/build <br>
+sudo -E ./lte-softmodem -O $OPENAIR_DIR/targets/PROJECTS/GENERIC-LTE-EPC/CONF/enb.band7.tm1.usrpb210.conf -d <br>
+sudo -E ./lte-softmodem -h #(to see help options) <br>
 
