@@ -31,9 +31,9 @@ install_oaienodeb() {
   source oaienv
   cd cmake_targets
   ./build_oai -I --eNB -x --install-system-files -w USRP
-  echo "Edit ~/openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF/enb.band7.tm1.usrpb210.conf to match with your Networking"
+  echo "Edit ~/openairinterface/targets/PROJECTS/GENERIC-LTE-EPC/CONF/enb.band7.tm1.usrpb210.conf to match with your Networking"
   echo "Samsung Galaxy S5 SM-G900A supports following Bands: 1,2,3,4,5,7,17"
   echo "Execute: $ source /srv/openairinterface5g/oaienv"
-  echo "Execute: $ ./srv/openairinterface5g/cmake_targets/lte_build_oai/build/lte-softmodem -O $OPENAIR_DIR/targets/PROJECTS/GENERIC-LTE-EPC/CONF/enb.band7.tm1.usrpb210.conf"
+  echo "Execute: $ ./srv/openairinterface/cmake_targets/lte_build_oai/build/lte-softmodem -O $OPENAIR_DIR/targets/PROJECTS/GENERIC-LTE-EPC/CONF/enb.band7.tm1.usrpb210.conf"
 }
 typeset -f | ssh $NODE.maas "$(cat);install_oaienodeb" >> enodeb3.log 
