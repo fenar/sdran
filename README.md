@@ -56,3 +56,5 @@ cd cmake_targets/lte_build_oai/build <br>
 sudo -E ./lte-softmodem -O $OPENAIR_DIR/targets/PROJECTS/GENERIC-LTE-EPC/CONF/enb.band7.tm1.usrpb210.conf -d <br>
 sudo -E ./lte-softmodem -h #(to see help options) <br>
 
+NOTES:
+(a) protobuf_c broken in main, workaround described in https://gitlab.eurecom.fr/oai/openairinterface5g/issues/259
