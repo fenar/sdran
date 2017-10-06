@@ -5,14 +5,15 @@
 #  -> net.ifnames=0 apparmor=0 intel_pstate=disable intel_idle.max_cstate=0 processor.max_cstate=1 idle=poll
 # Ref: https://gitlab.eurecom.fr/oai/openairinterface5g/wikis/OpenAirKernelMainSetup
 #
-obnum=`hostname | cut -c 10- -`
+#obnum=`hostname | cut -c 10- -`
+obnum=140
 
 if [ -f "/home/ubuntu/.ssh/known_hosts" ]; then
   sudo rm /home/ubuntu/.ssh/known_hosts
 fi
 
 if [ -z "$1" ]; then
-  NODE="node10ob$obnum"
+  NODE="node09ob140.maas"
 else 
   NODE=$1
 fi

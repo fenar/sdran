@@ -1,9 +1,10 @@
 series: xenial
 services: 
   "oai-enb": 
-    charm: "./oai-enb"
+    charm: "cs:~navid-nikaein/xenial/oai-enb-24"
     num_units: 1
     options: 
+      branch: "develop"
       N_RB_DL: 25
       downlink_frequency: "2680000000L"
       eutra_band: 7
@@ -13,70 +14,55 @@ services:
       agent_active: "no"
       remote_monitoring: "no"
       eth: "br-eth0"
-      agent_if_name: "br-eth0"
-#     branch: "devel_back_y16w38_y17w18"
     annotations: 
       "gui-x": "795.5335693359375"
       "gui-y": "1118.0245387647"
     to: 
       - "1"
   "oai-mme": 
-    charm: "cs:~navid-nikaein/trusty/oai-mme"
+    charm: "cs:~navid-nikaein/xenial/oai-mme-16"
     num_units: 1
     options:
-      eth: "br-eth0"
-#     branch: "devel_back_y16w38_y17w18"
-      #gummei_tai_mcc: "001\n"
-      #gummei_tai_mnc: "01\n"
+      branch: "develop"
+      eth: "eth0"
     annotations: 
       "gui-x": "412.0322265625"
       "gui-y": "807.6817932128906"
     to: 
-      - "2"      
+      - "lxd:1"      
   "oai-hss": 
-    charm: "cs:~navid-nikaein/trusty/oai-hss"
+    charm: "cs:~navid-nikaein/xenial/oai-hss-8"
     num_units: 1
     options:
-      eth: "br-eth0"
-      branch: "devel_back_y16w38_y17w18"
+      branch: "develop"
+      eth: "eth0"
     annotations: 
       "gui-x": "5.1247406005859375"
       "gui-y": "813.7240626904814"
     to: 
-      - "3"
+      - "lxd:2"
   "mysql": 
-    charm: "cs:trusty/mysql"
+    charm: "cs:xenial/mysql-56"
     num_units: 1
     annotations: 
       "gui-x": "-7.511909484863338"
       "gui-y": "541.4643581006377"
     to: 
-      - "4"
+      - "lxd:2"
   "oai-spgw":
-    charm: "cs:~navid-nikaein/trusty/oai-spgw"
+    charm: "cs:~navid-nikaein/xenial/oai-spgw-13"
     num_units: 1
     options:
-      branch: "devel_back_y16w38_y17w18"
+      branch: "develop"
       sgw-eth: "br-eth0"
       pgw-eth: "br-eth0"
-      DEFAULT_DNS_IPV4_ADDRESS: "8.8.8.8"
-      DEFAULT_DNS_SEC_IPV4_ADDRESS: "8.8.8.8"
+      DEFAULT_DNS_IPV4_ADDRESS: "172.27.61.254"
+      DEFAULT_DNS_SEC_IPV4_ADDRESS: "172.27.60.1"
     annotations:
       "gui-x": "391.90765380859375"
       "gui-y": "1136.3841552734375"
     to:
-      - "5"
-  phpmyadmin: 
-    charm: "cs:precise/phpmyadmin"
-    num_units: 1
-    annotations: 
-      "gui-x": "1190.5335693359375"
-      "gui-y": "1213.0245387647"
-    options:
-      add-user: "admin"
-      password: "password"
-    to: 
-      - "lxd:4"
+      - "2"
 relations: 
   - - "oai-enb:mme"
     - "oai-mme:mme"
@@ -86,21 +72,11 @@ relations:
     - "oai-mme:hss"
   - - "oai-mme:spgw"
     - "oai-spgw:spgw"
-  - - "phpmyadmin:db-admin"
-    - "mysql:db-admin"
 machines: 
   "1": 
     series: xenial
     constraints: "tags=radio"
   "2":
-    series: trusty
-    constraints: "tags=physical"
-  "3":
-    series: trusty
-    constraints: "tags=physical"
-  "4":
-    series: trusty
-    constraints: "tags=physical"
-  "5":
-    series: trusty
+    series: xenial
+    constraints: "arch=amd64 cpu-cores=4 mem=16G"
     constraints: "tags=physical"

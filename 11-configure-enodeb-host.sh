@@ -4,7 +4,7 @@
 obnum=`hostname | cut -c 10- -`
 
 if [ -z "$1" ]; then
-  NODE="node10ob$obnum"
+  NODE="node09ob$obnum"
 else
   NODE=$1
 fi
