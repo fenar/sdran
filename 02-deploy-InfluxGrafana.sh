@@ -62,25 +62,8 @@ install_ig() {
     do
         sleep 5s
     done
-    sudo -E apt-get install -y git python openjdk-8-jre 
 
-    while [ ! -z "$(sudo lsof /var/lib/apt/lists/lock)" ]
-    do
-        sleep 3s
-    done
-    curl https://bootstrap.pypa.io/get-pip.py | sudo python
-
-    while [ ! -z "$(sudo lsof /var/lib/apt/lists/lock)" ]
-    do
-        sleep 3s
-    done
-    sudo pip install jenkins-job-builder 
-
-    while [ ! -z "$(sudo lsof /var/lib/apt/lists/lock)" ]
-    do
-        sleep 3s
-    done
-
+    #instrall influxdb
     curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
     source /etc/lsb-release
     sudo -S true
@@ -96,11 +79,13 @@ install_ig() {
         echo "Waiting for dpkg lock..."
         sleep 5s
     done
+
     sudo apt-get install influxdb
     sleep 10s
     sudo service influxdb start
     sudo systemctl enable influxdb.service
     sleep 5s
+
     #install grafana
     echo "deb https://packagecloud.io/grafana/stable/debian/ jessie main" | sudo tee /etc/apt/sources.list.d/grafana.list
     curl https://packagecloud.io/gpg.key | sudo apt-key add -
@@ -116,6 +101,7 @@ install_ig() {
         sleep 5s
     done
     sudo apt-get install grafana
+
     sudo service grafana-server start
     sudo systemctl enable grafana-server.service
     influx -execute 'CREATE DATABASE iot_weather'
