@@ -89,7 +89,7 @@ install_ig() {
     #install grafana
     echo "deb https://packagecloud.io/grafana/stable/debian/ jessie main" | sudo tee /etc/apt/sources.list.d/grafana.list
     curl https://packagecloud.io/gpg.key | sudo apt-key add -
-    sudo apt-get update 
+    sudo apt-get update
     while [ ! -z "$(sudo lsof /var/lib/apt/lists/lock)"  ]
     do
         echo "Waiting for dpkg/apt lock..."
@@ -107,4 +107,4 @@ install_ig() {
     influx -execute 'CREATE DATABASE iot_weather'
     influx -execute 'SHOW DATABASES'
 }
-typeset -f | ssh $NODE.maas "$(cat);install_ig" >> IG.log 
+typeset -f | ssh $NODE.maas "$(cat);install_ig" >> IG.log
