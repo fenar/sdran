@@ -13,8 +13,8 @@ if [ -f "/home/ubuntu/.ssh/known_hosts" ]; then
 fi
 
 if [ -z "$1" ]; then
-  NODE="node09ob140.maas"
-else 
+  NODE="node10ob140"
+else
   NODE=$1
 fi
 
@@ -74,4 +74,4 @@ deploy_enodebhost() {
     done
     sudo reboot now
 }
-typeset -f | ssh $NODE.maas "$(cat);deploy_enodebhost" >> enodeb0.log 
+typeset -f | ssh $NODE.maas "$(cat);deploy_enodebhost" >> enodeb0.log

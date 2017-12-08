@@ -6,7 +6,7 @@ services:
     options: 
       N_RB_DL: 25
       downlink_frequency: "2120000000L"
-      eutra_band: 4
+      eutra_band: 7
       target_hardware: "usrp_b200"
       uplink_frequency_offset: "-400000000"
       node_function: "eNodeB_3GPP"
